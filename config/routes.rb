@@ -3,4 +3,13 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get 'categories' => 'categories#index'
+
+  get 'categories/:id' => 'categories#show'
+
+  get 'categories/new' => 'categories#new'
+
+  post 'categories' => 'categories#create'
+
 end
