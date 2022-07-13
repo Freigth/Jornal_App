@@ -4,12 +4,18 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  get 'categories' => 'categories#index'
+  root 'categories#index'
 
-  get 'categories/:id' => 'categories#show'
+  resources :categories do
+    resources :tasks
+  end
 
-  get 'categories/new' => 'categories#new'
+  # get 'categories' => 'categories#index'
 
-  post 'categories' => 'categories#create'
+  # get 'categories/:id' => 'categories#show'
+
+  # get 'categories/new' => 'categories#new'
+
+  # post 'categories' => 'categories#create'
 
 end

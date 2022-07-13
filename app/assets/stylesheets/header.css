@@ -1,0 +1,26 @@
+.header{
+    width: 100vw;
+    height: 20vh;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header > .view_categories{
+    padding: 10px;
+    background-color: #ECB390;
+    border: none;
+    cursor: pointer;
+}
+
+.view_categories:hover{
+    background-color: #DF7861;
+}
+
+.title-text{
+    font-family: 'Merriweather', serif;
+    font-weight: 900;
+    font-size: 3rem;
+    color: #DF7861;
+}

@@ -1,0 +1,125 @@
+.add_category_link{
+    border: none;
+    border-bottom: 2px solid #DF7861;
+    padding: 10px;
+    font-size: 1rem;
+    color: #FCF8E8;
+    font-weight: 700;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.category{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 20px;
+    background-color: #FCF8E8;
+    font-size: 1rem;
+}
+
+.category-name{
+    font-weight: 700;
+    color: #DF7861;
+}
+
+.category-link{
+    display: flex;
+    column-gap: 20px;
+}
+
+.category-links{
+    border: none;
+    font-weight: 700;
+    color: #94B49F;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.category-links.delete{
+    color: #DF7861;
+}
+
+/* NEW */
+
+
+.category-text{
+    color: #FCF8E8;
+    margin-top: 50px;
+}
+
+
+.form{
+    margin-top: 60px;
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    background-color: transparent;
+}
+
+.form > .form-text{
+    border: none;
+    outline: none;
+    padding: 5px 2px;
+    font-family: 'Inter';
+}
+
+.form > .form-submit{
+    padding: 5px 40px;
+    border: none;
+    cursor: pointer;
+    background-color: #DF7861;
+    color: #FCF8E8;
+    font-family: 'Inter';
+    font-weight: 700;
+}
+
+.form-submit:hover{
+    background-color: #ECB390;
+}
+
+.form > .category-label{
+    background-color: transparent;
+    color: #FCF8E8;
+    font-weight: 500;
+}
+
+.white{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 10vw;
+    background-color: #FCF8E8;
+}
+
+/* ERROR HANDLER */
+.error_handler{
+    background-color: transparent;
+    font-weight: 900;
+    font-family: 'Inter';
+}
+
+.error_handler > .error{
+    color: #DF7861;
+
+}
+
+.error_handler > .success{
+    color: #94B49F;
+}
+
+/* NOTICE */
+
+.notice{
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    background-color: transparent;
+    font-weight: 700;
+    border: 1px solid #ECB390;
+    color: #FCF8E8;
+    padding: 10px;
+}

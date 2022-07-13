@@ -1,6 +1,6 @@
 <%= stylesheet_link_tag "main" %>
 
-<h2 class='category-text'>Create Category</h2>
+<h2 class='category-text'>Edit Category</h2>
 
 <%= form_with model: @category, class: 'form' do |form| %>
 
@@ -8,13 +8,7 @@
 <p>Create name</p>
 </div>
 <%= form.text_field :name, class: 'form-text'%>
-<%= form.submit "add", :class => 'form-submit' %>
-
-  <div class='error_handler'>
-    <% if flash[:error] %>
-        <p class='error'><%= flash[:error] %></p>
-    <% end %>
-    </div>
+<%= form.submit "update", :class => 'form-submit' %>
 
 <% end %>
 

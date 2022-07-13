@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag 'task' %>
+
+
+<div class='task-body'>
+    <h1 class='task-category'><%= @category.name %> Tasks</h1>
+    <div class='tasks'>
+    <% @tasks.each do |task| %>
+        <div class='task-items'>
+            <div class='task-contents'>
+                <p><%= task.name %></p>
+                <p><%= task.description %></p>
+                <p><%= task.deadline %></p>
+            </div>
+            <div class='task-action'>
+                <%= link_to "edit", edit_category_task_path(@category.id, task.id), class: 'task edit'%>
+                <%= button_to "delete", category_task_path(@category.id, task.id), method: :delete, class: 'task delete', form:{ data:{ turbo_confirm: 'Are you sure?' } }%>
+            </div>
+        </div>
+    <% end %>
+    </div>
+</div>
+
+<%= link_to 'add task', new_category_task_path(@category.id), class:'add_task' %>
+
+
+<% if notice %>
+<div class='task notice_msg''><%= notice %></div>
+<% end %>
+
+
+
+
+
+
+
