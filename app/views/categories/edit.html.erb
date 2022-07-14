@@ -2,15 +2,7 @@
 
 <h2 class='category-text'>Edit Category</h2>
 
-<%= form_with model: @category, class: 'form' do |form| %>
-
-<div class='category-label'>
-<p>Create name</p>
-</div>
-<%= form.text_field :name, class: 'form-text'%>
-<%= form.submit "update", :class => 'form-submit' %>
-
-<% end %>
+<%= render "form", category: @category %>
 
 <section class='white'>
 </section>

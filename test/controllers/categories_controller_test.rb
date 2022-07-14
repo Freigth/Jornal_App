@@ -12,14 +12,9 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
     end
 
-    # test "should delete category" do
-    #     delete category_path(1)
-    #     assert_response :success
-    # end
-
     test "should create a category" do
-        post categories_path
-        assert_response :success
+        post categories_path, params: {"category": {"name": "Personal"}}
+        assert_response :redirect
     end
 
 end
