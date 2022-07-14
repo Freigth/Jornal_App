@@ -54,20 +54,21 @@
     font-weight: 700;
 }
 
-.task.edit{
+.task.edit, .task.delete{
+    background-color: transparent;
     cursor: pointer;
     font-weight: 800;
     border: none;
     text-decoration: none;
+
+}
+
+.task.edit{
     color: #94B49F;
 }
 
 .task.delete{
-    cursor: pointer;
-    font-weight: 800;
-    border: none;
-    text-decoration: none;
-    color: #DF7861;
+    color: #DF7861;  
 }
 
 

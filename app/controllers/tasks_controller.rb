@@ -13,15 +13,16 @@ class TasksController < ApplicationController
     end
 
     def create
+
         @task = @category.tasks.build(task_params)
         
         respond_to do |format|
 
             if @task.save
-                format.html{ redirect_to category_tasks_path(@category.id), notice: "task has been sucessfully added" }
+                format.html{ redirect_to category_tasks_path(@category.id), notice: "Task was successfully added." }
             else
-                format.html{ render :new, status: :unprocessable_entity}
-                flash[:error] = "Please check if your input is valid"
+                format.html{ render :new, status: :unprocessable_entity }
+                flash[:error] = "Please, check your input."
             end
 
         end
@@ -30,7 +31,16 @@ class TasksController < ApplicationController
 
     def destroy
         @task = @category.tasks.find(params[:id])
-        @task.destroy
+
+        respond_to do |format|
+
+             if @task.destroy
+                format.html{ redirect_to category_tasks_path(@category.id), notice: "Task was successfully deleted." }
+             end
+
+        end
+
+       
     end
 
     def edit
@@ -43,7 +53,10 @@ class TasksController < ApplicationController
         respond_to do |format|
 
             if @task.update(task_params)
-                format.html{ redirect_to category_tasks_path(@category.id) }
+                format.html{ redirect_to category_tasks_path(@category.id), notice: "Task was successfully updated." }
+            else
+                format.html{ render :new, status: :unprocessable_entity }
+                flash[:error] = "Please, check your input."
             end
 
         end

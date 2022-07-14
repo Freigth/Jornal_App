@@ -17,10 +17,10 @@ class CategoriesController < ApplicationController
         respond_to do |format|
             if @category.save
                 format.html { redirect_to categories_path }
-                flash[:notice] = 'successfully added!'
+                flash[:notice] = 'Category was successfully added.'
             else
                 format.html { render :new, status: :unprocessable_entity }
-                flash[:error] = 'Error: check your input'
+                flash[:error] = 'Please, check your input.'
             end
         end
 
@@ -35,7 +35,7 @@ class CategoriesController < ApplicationController
         @category.destroy
 
         respond_to do |format|
-            format.html { redirect_to categories_path, notice: "Category was successfully destroyed." }
+            format.html { redirect_to categories_path, notice: "Category was successfully deleted." }
         end
     end
 
@@ -46,7 +46,7 @@ class CategoriesController < ApplicationController
             if @category.update(category_params)
                 format.html { redirect_to categories_path, notice: "Category was successfully updated." }
             else
-                format.html { redirect_to categories_path, notice: "Category name should exist." }
+                format.html { redirect_to categories_path, notice: "Please, check your input." }
             end
         end
 
