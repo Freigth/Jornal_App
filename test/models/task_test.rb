@@ -11,4 +11,5 @@ class TaskTest < ActiveSupport::TestCase
 
     assert_equal @task.category, @category
   end
+  
 end

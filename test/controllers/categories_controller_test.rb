@@ -17,4 +17,24 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
         assert_response :redirect
     end
 
+    test "should not save without name" do
+        @category = Category.new
+        assert_not @category.save
+    end
+
+    test "should delete a category" do
+        @category = Category.create(name: "Personal")
+        delete category_path(@category.id)
+
+        assert_response :redirect
+    end
+
+    test "should update a category" do
+        @category = Category.create(name: "Personal")
+        patch category_path(@category.id), params: {"category": {"name": "Personal Updated"}}
+
+        assert_response :redirect
+    end
+
+
 end
