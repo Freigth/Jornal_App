@@ -12,4 +12,5 @@ class CreateCategoryTest < ActionDispatch::IntegrationTest
         end
     end
 
+
 end

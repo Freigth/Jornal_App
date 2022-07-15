@@ -9,6 +9,7 @@
 
 .task-category{
     align-self: center;
+    font-size: 2rem;
 }
 
 .tasks, .task-items, .task-items > p, .task-contents{
@@ -87,6 +88,7 @@
 
 .add_task:hover{
     background-color: #ECB390;
+    color: #FCF8E8;
 }
 
 /* NEW */
@@ -109,7 +111,7 @@
     background-color: #FCF8E8;
     border: none;
     outline: none;
-    padding: 5px 2px;
+    padding-left: 2px;
 }
 
 .task-name, .task-datetime{

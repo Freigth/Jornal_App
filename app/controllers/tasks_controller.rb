@@ -63,6 +63,10 @@ class TasksController < ApplicationController
         
     end
 
+    def today
+        @task = Task.where(due_date < DateTime.now)
+    end
+
     private
     def set_task
         @category = Category.find(params[:category_id])
