@@ -1,0 +1,32 @@
+ h1, h2, h3, h4, h5, h6, p{
+   background-color: transparent;
+ }
+
+ *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+ }
+
+ body{
+   font-family: 'Inter', sans-serif;
+   position: relative;
+ }
+
+ .main{
+   width: 100vw;
+   height: 80vh;
+   background-color: #94B49F;
+   padding: 20px 50px;
+   position: relative;
+ }
+
+ .link{
+   text-decoration: none;
+   background-color: transparent;
+   font-family: 'Inter';
+   font-weight: 700;
+   color: #FCF8E8;
+ }
+
+ @import "bootstrap";

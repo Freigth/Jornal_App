@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-    before_action :set_task
+    before_action :set_task, only: [:show, :edit, :update, :destroy]
 
     def index
         @tasks = @category.tasks
@@ -64,7 +64,8 @@ class TasksController < ApplicationController
     end
 
     def today
-        @task = Task.where(due_date < DateTime.now)
+        # Task.where(name: "some name")
+        @urgent_task = Task.where("deadline < ?", DateTime.now.getlocal)
     end
 
     private

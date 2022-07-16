@@ -36,5 +36,25 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
         assert_response :redirect
     end
 
+    test "should have an edit route" do
+        @category = Category.create(name: "Personal")
+
+        get edit_category_path(@category.id)
+        assert_response :success
+    end
+
+    test "should throw error when invalid" do
+        post categories_path, params: {"category": {"name": ""}}
+
+        assert_response :unprocessable_entity
+    end
+
+    test "should throw when error on update" do
+        @category = Category.create(name: "Personal")
+
+        patch category_path(@category.id), params: {"category": {"name": ""}}
+        assert_response :redirect
+    end
+
 
 end

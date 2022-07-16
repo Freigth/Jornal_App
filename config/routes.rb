@@ -6,9 +6,13 @@ Rails.application.routes.draw do
 
   root 'categories#index'
 
+  get "tasks/today" => "tasks#today"
+
   resources :categories do
     resources :tasks
   end
+
+  
 
   # get 'categories' => 'categories#index'
 
