@@ -1,5 +1,8 @@
 <%= stylesheet_link_tag "header" %>
 
 <h1 class='title-text'>To Do List</h1>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+<%= button_to "signout", destroy_user_session_path, method: :delete %>
 
 <%= link_to 'VIEW CATEGORIES', categories_path, class: 'view_categories link' %>
