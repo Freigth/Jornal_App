@@ -1,20 +1,14 @@
-<%= stylesheet_link_tag "main" %>
-
-<button class='add_category_link'><%= link_to 'add category', new_category_path, class: 'link' %></button>
+<%= link_to 'add category', new_category_path, class: 'btn btn-secondary' %>
 
 <% @categories.each do |category| %>
 
-<div class='category'>
-    <p class ='category-name'> <%= category.name %> </p>
-    <div class='category-link'>
-        <button class='category-links'><%= link_to 'view tasks', category_tasks_path(category.id), class: 'category-links tasks' %></button>
-        <button class='category-links'><%= link_to 'edit', edit_category_path(category.id), class: 'category-links edit' %></button>
-        <%= button_to 'delete', category_path(category.id), method: :delete, class: 'category-links delete', form:{ data:{ turbo_confirm: 'Are you sure?' } } %>
+<div class='container d-flex justify-content-between align-items-center pt-3 pb-3 mt-3 bg-dark rounded'>
+    <p class ='m-0 text-white'> <%= category.name %> </p>
+    <div class='d-flex justify-content-between align-items-center gx-2'>
+        <%= link_to 'view tasks', category_tasks_path(category.id), class: 'btn text-info' %>
+        <%= link_to 'edit', edit_category_path(category.id), class: 'btn text-info' %>
+        <%= button_to 'delete', category_path(category.id), method: :delete, class: 'btn text-danger', form:{ data:{ turbo_confirm: 'Are you sure?' } } %>
     </div>
 </div>
-<% end %>
-
-<% if notice %>
-    <div class='notice' ><%= notice %></div>
 <% end %>
 

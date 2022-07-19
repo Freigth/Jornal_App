@@ -2,23 +2,22 @@ class CategoriesController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        @categories = Category.all
+        @categories = current_user.categories
     end
 
     def show
     end
 
     def edit
-        @category = Category.find(params[:id])
+        @category = current_user.categories.find(params[:id])
     end
 
     def create
-        @category = Category.new(category_params)
+        @category = current_user.categories.build(category_params)
 
         respond_to do |format|
             if @category.save
-                format.html { redirect_to categories_path }
-                flash[:notice] = 'Category was successfully added.'
+                format.html { redirect_to categories_path, notice: 'Category was successfully added.' }
             else
                 format.html { render :new, status: :unprocessable_entity }
                 flash[:error] = 'Please, check your input.'
@@ -28,11 +27,11 @@ class CategoriesController < ApplicationController
     end
 
     def new
-        @category = Category.new
+        @category = current_user.categories.build
     end
 
     def destroy
-        @category = Category.find(params[:id])
+        @category = current_user.categories.find(params[:id])
         @category.destroy
 
         respond_to do |format|
@@ -41,7 +40,7 @@ class CategoriesController < ApplicationController
     end
 
     def update
-        @category = Category.find(params[:id])
+        @category = current_user.categories.find(params[:id])
 
         respond_to do |format|
             if @category.update(category_params)

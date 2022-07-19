@@ -1,15 +1,10 @@
-<%= form_with model: category, class: 'form' do |form| %>
+<%= form_with model: category, class:'mt-5' do |form| %>
 
-<div class='category-label'>
-<p>Category name</p>
+<div class='form-group'>
+<p class='white'>Category name</p>
+<%= form.text_field :name, class: 'form-control', placeholder: "Category Name"%>
+<%= form.submit class: 'btn btn-secondary mt-3' %>
 </div>
-<%= form.text_field :name, class: 'form-text'%>
-<%= form.submit class: 'form-submit' %>
-
-  <div class='error_handler'>
-    <% if flash[:error] %>
-        <p class='error'><%= flash[:error] %></p>
-    <% end %>
-    </div>
 
 <% end %>
+

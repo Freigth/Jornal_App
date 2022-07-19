@@ -1,8 +1,14 @@
-<%= stylesheet_link_tag "header" %>
+<div class='row p-5'>
 
-<h1 class='title-text'>To Do List</h1>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-<%= button_to "signout", destroy_user_session_path, method: :delete %>
-
-<%= link_to 'VIEW CATEGORIES', categories_path, class: 'view_categories link' %>
+    <h1 class='text-white font-weight-bold col-6 white'>To Do List</h1>
+    
+    <div class='col-6 d-flex align-items-center justify-content-between'>
+        <div class='d-flex'>
+            <%= link_to 'Urgent Tasks', tasks_today_path, class: 'btn btn-outline-secondary text-light ' %>
+            <%= link_to 'View Categories', categories_path, class: 'btn btn-outline-secondary text-light ' %>
+        </div>
+        
+        <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn btn-secondary white' %>
+    </div>
+    
+</div>

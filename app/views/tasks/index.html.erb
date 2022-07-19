@@ -1,32 +1,25 @@
-<%= stylesheet_link_tag 'task' %>
+<h1 class='light-blue text-center'><%= @user.name %> Tasks</h1>
 
-
-<div class='task-body'>
-    <h1 class='task-category'><%= @category.name %> Tasks</h1>
-    <div class='tasks container'>
-    <% @tasks.each do |task| %>
-        <div class='task-items'>
-            <div class='task-contents'>
-                <p><%= task.name %></p>
-                <p><%= task.description %></p>
-                <p><%= task.deadline %></p>
+<div class='container-fluid'>
+    <div class='row mt-5'>
+        <% @tasks.each do |task| %>
+            <div class='col-md-3 col-lg-5 text-center white mx-auto my-2 bg-dark p-4 rounded'>
+                <div class='task-contents'>
+                    <p><%= task.name %></p>
+                    <p><%= task.description %></p>
+                    <p><%= task.deadline %></p>
+                </div>
+                <div class='d-flex slign-items-center justify-content-around'>
+                    <%= link_to "edit", edit_category_task_path(@user.id, task.id), class: 'btn btn-outline-secondary'%>
+                    <%= button_to "delete", category_task_path(@user.id, task.id), method: :delete, class: 'btn btn-outline-danger', form:{ data:{ turbo_confirm: 'Are you sure?' } }%>
+                </div>
             </div>
-            <div class='task-action'>
-                <%= link_to "edit", edit_category_task_path(@category.id, task.id), class: 'task edit'%>
-                <%= button_to "delete", category_task_path(@category.id, task.id), method: :delete, class: 'task delete', form:{ data:{ turbo_confirm: 'Are you sure?' } }%>
-            </div>
-        </div>
-    <% end %>
+        <% end %>
     </div>
 </div>
+    
 
-<%= link_to 'add task', new_category_task_path(@category.id), class:'add_task' %>
-
-
-<% if notice %>
-<div class='task notice_msg''><%= notice %></div>
-<% end %>
-
+<%= link_to 'add task', new_category_task_path(@user.id), class:'btn btn-secondary my-4' %>
 
 
 

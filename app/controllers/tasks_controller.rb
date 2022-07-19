@@ -1,8 +1,10 @@
 class TasksController < ApplicationController
-    before_action :set_task, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!
+    before_action :set_task, only: [:show, :edit, :update, :destroy, :new, :create]
 
     def index
-        @tasks = @category.tasks
+        @user = current_user.categories.find(params[:category_id])
+        @tasks = @user.tasks
     end
 
     def show
@@ -65,12 +67,12 @@ class TasksController < ApplicationController
 
     def today
         # Task.where(name: "some name")
-        @urgent_task = Task.where("deadline < ?", DateTime.now.getlocal)
+        @urgent_task = current_user.tasks.where("deadline < ?", DateTime.now.getlocal)
     end
 
     private
     def set_task
-        @category = Category.find(params[:category_id])
+        @category = current_user.categories.find(params[:category_id])
     end
 
     def task_params
