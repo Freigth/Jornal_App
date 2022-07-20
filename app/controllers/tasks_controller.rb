@@ -67,7 +67,11 @@ class TasksController < ApplicationController
 
     def today
         # Task.where(name: "some name")
-        @urgent_task = current_user.tasks.where("deadline < ?", DateTime.now.getlocal)
+        @today_task = current_user.tasks.where(deadline: (DateTime.current.midnight)..DateTime.current.midnight + 1)
+    end
+
+    def overdue
+        @overdue_task = current_user.tasks.where("deadline < ?", DateTime.current)
     end
 
     private

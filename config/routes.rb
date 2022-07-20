@@ -8,12 +8,11 @@ Rails.application.routes.draw do
   root 'categories#index'
 
   get "tasks/today" => "tasks#today"
+  get "tasks/overdue" => "tasks#overdue"
 
   resources :categories do
     resources :tasks
   end
-
-  
 
   # get 'categories' => 'categories#index'
 

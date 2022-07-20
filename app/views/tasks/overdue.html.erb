@@ -1,8 +1,8 @@
-<% if @today_task.count === 0 %>
-    <h2 class='white'>No Tasks for today</h2>
+<% if @overdue_task.count === 0 %>
+    <h2 class='white'>No Overdue Tasks</h2>
 <% else %>
     <div class='container-fluid'>
-    <% @today_task.each do |task| %>
+    <% @overdue_task.each do |task| %>
         <div class='row border-bottom border-light p-3'>
             <h5 class='white'><span class='light-blue'>Task name:</span> <%= task.name %></h5>
             <h5 class='white'><span class='light-blue'>Task deadline:</span> <%= task.deadline%></h5>

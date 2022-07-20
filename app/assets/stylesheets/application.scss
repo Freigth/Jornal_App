@@ -1,3 +1,24 @@
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #A5C9CA; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #A5C9CA; 
+}
+
 $primary: #2C3333;
 $secondary: #395B64;
 
@@ -9,6 +30,7 @@ $secondary: #395B64;
   color: #A5C9CA;
 }
 
+$headings-font-family: 'Inter';
 
 @import "bootstrap";
 

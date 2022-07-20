@@ -20,6 +20,9 @@
       <section class='container-fluid border-5 border-bottom border-white'>
           <%= render "categories/header" %>
       </section>
+
+        <%= devise_error_messages! %>
+        <%= device_error_messages.length %>
       
        <% if notice %>
         <div class="alert alert-dark alert-dismissible fade show" role="alert">
@@ -41,9 +44,22 @@
       </section>
 
     <% else %>
-      <section class='main'>
-        <%= yield %>
-      </section>
+      <div class='container-fluid'>
+        <div class='row vh-100'>
+          <section class='col-6 bg-primary'>
+            <div class='m-5 p-5'>
+              <%= render "categories/greetings"%>
+            </div>
+          </section>
+
+          <section class='col-6 bg-secondary'>
+            <div class='m-5 p-5'>
+              <%= yield %>
+            </div>
+          </section>
+        </div>
+      </div>
+    
     <% end %>
     
   </body>
