@@ -7,8 +7,10 @@ Rails.application.routes.draw do
 
   root 'categories#index'
 
+  get "tasks/show_overdue_tasks/:overdue_id" => "tasks#show_tasks", as: "show_overdue_tasks"
   get "tasks/today" => "tasks#today"
   get "tasks/overdue" => "tasks#overdue"
+  
 
   resources :categories do
     resources :tasks

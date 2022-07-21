@@ -1,6 +1,7 @@
 <h2 class='white'>Welcome back</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "mt-5 form-group"}, data: { turbo: false }) do |f| %>
+  
   <div class="field">
     <%= f.label :email, class:'white' %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" , class:'form-control mb-2'%>

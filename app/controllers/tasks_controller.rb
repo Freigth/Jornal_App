@@ -72,6 +72,21 @@ class TasksController < ApplicationController
 
     def overdue
         @overdue_task = current_user.tasks.where("deadline < ?", DateTime.current)
+        @categories = []
+        @filtered_category = []
+
+        @overdue_task.each do |task|
+            @categories << task.category_id
+        end
+
+        @categories.uniq.each do |category|
+            @filtered_category << current_user.categories.find(category)
+        end
+    end
+
+    def show_tasks
+        @overdue = current_user.categories.find(params[:overdue_id])
+        @show_task = @overdue.tasks.where("deadline < ?", DateTime.current)
     end
 
     private
