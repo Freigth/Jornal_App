@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/users', to: redirect('/users/sign_up')
 
   # ERRORS
-  get '*path' => 'errors#not_found'
+  # get '*path' => redirect('/')
 
   # root "articles#index"
 
