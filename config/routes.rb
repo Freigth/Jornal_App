@@ -1,17 +1,21 @@
 Rails.application.routes.draw do
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # FOR SIGN_UP REDIRECT
+  get '/users', to: redirect('/users/sign_up')
 
-  # Defines the root path route ("/")
+  # ERRORS
+  get '*path' => 'errors#not_found'
+
   # root "articles#index"
 
   root 'categories#index'
 
+  # CUSTOM TASKS ROUTE
   get "tasks/show_overdue_tasks/:overdue_id" => "tasks#show_tasks", as: "show_overdue_tasks"
   get "tasks/today" => "tasks#today"
   get "tasks/overdue" => "tasks#overdue"
-  
 
+  # MAIN
   resources :categories do
     resources :tasks
   end

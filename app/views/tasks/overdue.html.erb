@@ -2,12 +2,18 @@
     <% @filtered_category.each do |category| %>
         <% @num_of_overdue = category.tasks.where('deadline < ?', DateTime.current) %>
         <div class='col-5 card m-2'>
+            <div class='card-header'>
+                Category
+            </div>
             <div class='card-body'>
-                <h2 class='card-title'><%= category.name %> Category</h2>
-                <p class='card-text text-danger'><%= @num_of_overdue.length %> overdue <% if @num_of_overdue.length === 1 %>
-                 task 
+                <h4 class='card-title'><%= category.name %></h4>
+                <p class='card-text text-danger'>
+                <%= @num_of_overdue.length %> 
+                    overdue 
+                <% if @num_of_overdue.length === 1 %>
+                    task 
                  <% else %>
-                 tasks 
+                    tasks 
                  <% end %> 
                  </p>
                 <%= link_to 'view overdue tasks', show_overdue_tasks_path(category.id), class: 'btn btn-secondary' %>
