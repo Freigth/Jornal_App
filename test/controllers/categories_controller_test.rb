@@ -2,6 +2,11 @@ require "test_helper"
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
+    setup do
+        @user = User.create(email: 'test@email.com', password: 'password')
+        @category = Category.create(name: "some category", user_id: @user.id)
+    end
+
     test "should get index" do
         get categories_path
         assert_response :success

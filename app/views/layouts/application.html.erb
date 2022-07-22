@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>JournalApp</title>
+    <title>Journal App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <%= favicon_link_tag asset_path('favicon_io/apple-touch-icon.png'), sizes: "100x100" %>
+    <%= favicon_link_tag asset_path('favicon_io/favicon-32x32.png'), sizes: "32x32" %>
+    <%= favicon_link_tag asset_path('favicon_io/favicon-16x16.png'), sizes: "16x16" %>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,17 +17,18 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+ 
   </head>
 
   <body>
 
     <% if user_signed_in? %>
-      <section class='container-fluid border-5 border-bottom border-white'>
+      <section class='container-fluid border-5 border-bottom border-dark'>
           <%= render "categories/header" %>
       </section>
       
        <% if notice %>
-        <div class="alert alert-dark alert-dismissible fade show" role="alert">
+        <div class="alert alert-secondary fade show" role="alert">
           <strong>Notice:</strong> <%= notice %>
           </button>
         </div>  

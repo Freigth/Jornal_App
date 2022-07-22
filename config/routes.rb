@@ -3,9 +3,6 @@ Rails.application.routes.draw do
   # FOR SIGN_UP REDIRECT
   get '/users', to: redirect('/users/sign_up')
 
-  # ERRORS
-  # get '*path' => redirect('/')
-
   # root "articles#index"
 
   root 'categories#index'
@@ -19,6 +16,9 @@ Rails.application.routes.draw do
   resources :categories do
     resources :tasks
   end
+
+  # ERRORS
+  get '*path' => 'errors#not_found'
 
   # get 'categories' => 'categories#index'
 

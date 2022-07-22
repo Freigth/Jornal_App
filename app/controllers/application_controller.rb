@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
         new_user_session_path
     end
 
-    def after_sign_up_path_for(resouce)
-        new_user_registration_path
-    end
+    # def after_sign_up_path_for(resouce)
+    #     new_user_registration_path
+    # end
     
 end
