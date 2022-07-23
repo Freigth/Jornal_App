@@ -9,7 +9,6 @@ class CategoriesController < ApplicationController
     end
 
     def edit
-        binding.pry
         @category = current_user.categories.find(params[:id])
     end
 

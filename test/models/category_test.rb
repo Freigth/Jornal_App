@@ -1,6 +1,11 @@
 require "test_helper"
 
 class CategoryTest < ActiveSupport::TestCase
+  include Devise::Test::IntegrationHelpers
+
+  # setup do
+  #   sign_in(users(:one))
+  # end
   
   # test "creating" do
   #   @category = Category.new
