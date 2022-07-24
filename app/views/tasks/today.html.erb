@@ -5,7 +5,8 @@
     <% @today_task.each do |task| %>
         <div class='row border-5 border-bottom border-success p-3'>
             <h5 class='white'><span class='light-blue'>Task name:</span> <%= task.name %></h5>
-            <h5 class='white'><span class='light-blue'>Task deadline:</span> <%= task.deadline%></h5>
+            <h5 class='white'><span class='light-blue'>Task description:</span> <%= task.description %></h5>
+            <h5 class='white'><span class='light-blue'>Task deadline:</span> <%= task.deadline.time.strftime('%I:%M %p') %> on <%= task.deadline.strftime('%A') %>, <%= task.deadline.strftime('%B') %> <%= task.deadline.day %>, <%= task.deadline.year %></h5>
             <% name = task.category.to_json %>
             <% parsed = JSON(name) %>
             <h5 class='white'><span class='light-blue'>Category name:</span> <%= parsed['name'] %></h5>
