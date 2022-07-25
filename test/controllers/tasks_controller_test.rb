@@ -1,19 +1,31 @@
 require "test_helper"
 
 class TasksControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+  
   setup do
-    @user = User.create(email: 'test@email.com', password: 'password')
+    @user = users(:user)
+    sign_in(@user)
+
+    # @category = categories(:category_one)
+    # @task = tasks(:task_one)
+
     @category = Category.create(name: "some category", user_id: @user.id)
+    @task = Task.create(name: "task name", description: "task description", deadline: '2022-01-01', category_id: @category.id)
+    @overdue = @category.tasks.where("deadline < ?", DateTime.current)
   end
   
   test "should get index" do
-    
     get category_tasks_path(@category.id)
     assert_response :success
   end
 
-  test "should create a task" do
+  test "should create a new task" do
+    get new_category_task_path(@category.id, @task.id)
+    assert_response :success
+  end
 
+  test "should create a task" do
     post category_tasks_path(@category.id), params: {"task": {"name": "Task Name", "description": "Task Description", "deadline": "2022-01-01", "category_id": @category.id}}
     assert_response :redirect
   end
@@ -25,43 +37,38 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  test "should update a task" do
-    @task = Task.create(name: "Task Name", description: "Task Description", deadline: "2022-01-01", category_id: @category.id)
-
-    patch category_task_path(@category.id, @task.id), params: {"task": {"name": "Task Name Updated", "description": "Task Description", "deadline": "2022-01-01", "category_id": @category.id}}
-    assert_response :redirect
-  end
-
-  test "should not save when nil" do
-    @task = Task.new
-
-    assert_not @task.save
-  end
-
-  test "should have a new route" do
-
-    get new_category_task_path(@category.id)
-    assert_response :success
-  end
-
   test "should throw error when task is empty" do
-
-    post category_tasks_path(@category.id), params: {"task": {"name": "", "description": "", "deadline": "", "category_id": @category.id}}
-    assert_response :unprocessable_entity
-  end
-
-  test "should throw error when update is invalid" do
-    @task = Task.create(name: "Task Name", description: "Task Description", deadline: "2022-01-01", category_id: @category.id)
-
-    patch category_task_path(@category.id, @task.id), params: {"task": {"name": "", "description": "", "deadline": "2022-01-01", "category_id": @category.id}}
+    post category_tasks_path(@category.id), params: {"task": {"name": "", "description": "", "deadline": ""}}
     assert_response :unprocessable_entity
   end
 
   test "should have edit" do
-    @category = Category.create(name: "some category", user_id: @user.id)
-    @task = Task.create(name: "Task Name", description: "Task Description", deadline: "2022-01-01", category_id: @category.id)
-
     get edit_category_task_path(@category.id, @task.id)
+    assert_response :success
+  end
+
+  test "should update a task" do
+    patch category_task_path(@category.id, @task.id), params: {"task": {"name": "Task Name Updated"}}
+    assert_response :redirect
+  end
+
+  test "should throw error when update is invalid" do
+    patch category_task_path(@category.id, @task.id), params: {"task": {"name": "", "description": ""}}
+    assert_response :unprocessable_entity
+  end
+
+  test "should have tasks for today" do
+    get tasks_today_path
+    assert_response :success
+  end
+
+  test "should have overdue tasks" do
+    get tasks_overdue_path
+    assert_response :success
+  end
+
+  test "should show all overdue tasks" do
+    get show_overdue_tasks_path(@category.id)
     assert_response :success
   end
 

@@ -1,10 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+task_one:
   name: MyString
   description: MyText
   deadline: 2022-07-08 19:27:31
-  category_id: 1
+  category_id: category_one
 
 two:
   name: MyString
